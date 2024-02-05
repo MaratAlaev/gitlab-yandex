@@ -1,0 +1,14 @@
+stages:
+  - "build"
+  - "deploy"
+
+builder:
+    stage: build
+    script: 
+        - docker build -t hello:gitlab-$CI_COMMIT_SHORT_SHA .
+
+depoyer:
+    stage: deploy
+    script:
+        - docker build -t cr.yandex/$YC_REGISTRY/hello:gitlab-$CI_COMMIT_SHORT_SHA .
+        - docker push cr.yandex/$YC_REGISTRY/hello:gitlab-$CI_COMMIT_SHORT_SHA

@@ -1,0 +1,118 @@
+[0KRunning with gitlab-runner 16.8.0 (c72a09b6)[0;m
+[0K  on vm-2 ns-ux5JBU, system ID: s_c9b0482cfa88[0;m
+section_start:1707152940:prepare_executor
+[0K[0K[36;1mPreparing the "shell" executor[0;m[0;m
+[0KUsing Shell (bash) executor...[0;m
+section_end:1707152940:prepare_executor
+[0Ksection_start:1707152940:prepare_script
+[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on vm-2...
+section_end:1707152940:prepare_script
+[0Ksection_start:1707152940:get_sources
+[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Reinitialized existing Git repository in /home/gitlab-runner/builds/ns-ux5JBU/0/mygroup/devops-netology/.git/
+[32;1mChecking out 47f2833f as detached HEAD (ref is main)...[0;m
+[32;1mSkipping Git submodules setup[0;m
+section_end:1707152940:get_sources
+[0Ksection_start:1707152940:step_script
+[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[32;1m$ docker build -t hello:gitlab-$CI_COMMIT_SHORT_SHA .[0;m
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  67.07kB
+
+Step 1/6 : FROM centos:7
+ ---> eeb6ee3f44bd
+Step 2/6 : RUN yum install python3 python3-pip -y
+ ---> Using cache
+ ---> 4d480e5f1e77
+Step 3/6 : COPY req.txt req.txt
+ ---> Using cache
+ ---> 615451b86fb1
+Step 4/6 : RUN pip3 install -r req.txt && mkdir ./python_api
+ ---> Using cache
+ ---> 2a3cd5bada1d
+Step 5/6 : COPY python_api.py ./python_api/python_api.py
+ ---> Using cache
+ ---> 618a6c9cb741
+Step 6/6 : CMD ["python3", "./python_api/python_api.py"]
+ ---> Using cache
+ ---> 0687680b36d9
+Successfully built 0687680b36d9
+Successfully tagged hello:gitlab-47f2833f
+section_end:1707152940:step_script
+[0K[32;1mJob succeeded[0;
+
+
+
+
+
+
+
+
+[0KRunning with gitlab-runner 16.8.0 (c72a09b6)[0;m
+[0K  on vm-2 ns-ux5JBU, system ID: s_c9b0482cfa88[0;m
+section_start:1707152943:prepare_executor
+[0K[0K[36;1mPreparing the "shell" executor[0;m[0;m
+[0KUsing Shell (bash) executor...[0;m
+section_end:1707152943:prepare_executor
+[0Ksection_start:1707152943:prepare_script
+[0K[0K[36;1mPreparing environment[0;m[0;m
+Running on vm-2...
+section_end:1707152943:prepare_script
+[0Ksection_start:1707152943:get_sources
+[0K[0K[36;1mGetting source from Git repository[0;m[0;m
+[32;1mFetching changes with git depth set to 20...[0;m
+Reinitialized existing Git repository in /home/gitlab-runner/builds/ns-ux5JBU/0/mygroup/devops-netology/.git/
+[32;1mChecking out 47f2833f as detached HEAD (ref is main)...[0;m
+[32;1mSkipping Git submodules setup[0;m
+section_end:1707152943:get_sources
+[0Ksection_start:1707152943:step_script
+[0K[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+[32;1m$ docker build -t cr.yandex/$YC_REGISTRY/hello:gitlab-$CI_COMMIT_SHORT_SHA .[0;m
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  67.07kB
+
+Step 1/6 : FROM centos:7
+ ---> eeb6ee3f44bd
+Step 2/6 : RUN yum install python3 python3-pip -y
+ ---> Using cache
+ ---> 4d480e5f1e77
+Step 3/6 : COPY req.txt req.txt
+ ---> Using cache
+ ---> 615451b86fb1
+Step 4/6 : RUN pip3 install -r req.txt && mkdir ./python_api
+ ---> Using cache
+ ---> 2a3cd5bada1d
+Step 5/6 : COPY python_api.py ./python_api/python_api.py
+ ---> Using cache
+ ---> 618a6c9cb741
+Step 6/6 : CMD ["python3", "./python_api/python_api.py"]
+ ---> Using cache
+ ---> 0687680b36d9
+Successfully built 0687680b36d9
+Successfully tagged cr.yandex/crp7b2l6d5igvp4kmpb3/hello:gitlab-47f2833f
+[32;1m$ docker push cr.yandex/$YC_REGISTRY/hello:gitlab-$CI_COMMIT_SHORT_SHA[0;m
+The push refers to repository [cr.yandex/crp7b2l6d5igvp4kmpb3/hello]
+7ae4d975e659: Preparing
+42ca07bac296: Preparing
+38948a132679: Preparing
+aa2284adc8e6: Preparing
+174f56854903: Preparing
+aa2284adc8e6: Layer already exists
+42ca07bac296: Layer already exists
+38948a132679: Layer already exists
+174f56854903: Layer already exists
+7ae4d975e659: Layer already exists
+gitlab-47f2833f: digest: sha256:4df9a580282b3f7eb836a61a89b5698d416602797b0cd20b76c0db27685be782 size: 1366
+section_end:1707152944:step_script
+[0K[32;1mJob succeeded[0;m
+
+
+
